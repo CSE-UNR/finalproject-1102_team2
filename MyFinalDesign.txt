@@ -22,7 +22,7 @@ Data: Arrays for image, files containing images, variable for brightness
 Functionality: Load the menu, In a loop ask player questions regarding choices for an
 image, display the choices, repeat until the user exits. Save the final image
 
-menu()
+menu() Ayla
 Input parameters: None
 Returned Output: None
 Functionality: Display the options of load new image, display current image, edit
@@ -33,7 +33,7 @@ Input parameters: File pointer, int rows, int columns, char image 2D array
 Returned Output: None
 Functionality: Read the contents of a file provided to get an image.
 
-EditMenu()
+EditMenu() Ayla
 Input parameters: None
 Returned Output: None
 Functionality: Display the options of crop, dim, brighten or rotate image, get the user
@@ -44,7 +44,7 @@ Input parameters: File pointer, int rows, int columns, char image 2D array
 Returned Output: None
 Functionality: Display the current image into a 2D array
 
-CropImage()
+CropImage() Ayla
 Input parameters: File pointer, int rows, int columns, char image 2D array
 Returned Output: address of 2D array
 Functionality: takes a section of 2D array and allows for user input to create and edited
@@ -62,7 +62,7 @@ Returned Output: address of 2D array
 Functionality: takes the image and makes each pixel in the 2D array increase by one
 value making it “brighter”, display changes
 
-RotateImage() 
+RotateImage() Ayla
 Input parameters: File pointer, int rows, int columns, char image 2D array
 Returned Output: address of 2D array
 Functionality: takes the image and changes the location of each pixel in the 2D array

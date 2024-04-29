@@ -1,0 +1,69 @@
+Final Project Design
+Ayla Velasquez
+Erinstagram
+
+Data
+Image - 2D array of int
+User Choice- int
+Image File pointers
+Image Rows and Columns - int
+Brightness - int
+Choice - int
+
+Functionality:
+A user is given 4 choices concerning an image. User chooses an option. Image can be
+loaded from a file then displayed, a default image can be displayed, an image can be
+edited and the image will be saved and displayed. Repeat until the user exits the menu.
+The last image displayed is saved.
+
+Functions:
+main() Arrays for image, files containing images
+Data: Arrays for image, files containing images, variable for brightness
+Functionality: Load the menu, In a loop ask player questions regarding choices for an
+image, display the choices, repeat until the user exits. Save the final image
+
+menu()
+Input parameters: None
+Returned Output: None
+Functionality: Display the options of load new image, display current image, edit
+current image and exit program, gets user choice.
+
+GetImage()
+Input parameters: File pointer, int rows, int columns, char image 2D array
+Returned Output: None
+Functionality: Read the contents of a file provided to get an image.
+
+EditMenu()
+Input parameters: None
+Returned Output: None
+Functionality: Display the options of crop, dim, brighten or rotate image, get the user
+choice
+
+DisplayImage()
+Input parameters: File pointer, int rows, int columns, char image 2D array
+Returned Output: None
+Functionality: Display the current image into a 2D array
+
+CropImage()
+Input parameters: File pointer, int rows, int columns, char image 2D array
+Returned Output: address of 2D array
+Functionality: takes a section of 2D array and allows for user input to create and edited
+image, display changes
+
+DimImage()
+Input parameters: File pointer, int rows, int columns, char image 2D array
+Returned Output: address of 2D array
+Functionality: takes the image and makes each pixel in the 2D array decrease by one
+value making it “dimmer”, display changes
+
+BrightenImage()
+Input parameters: File pointer, int rows, int columns, char image 2D array
+Returned Output: address of 2D array
+Functionality: takes the image and makes each pixel in the 2D array increase by one
+value making it “brighter”, display changes
+
+RotateImage()
+Input parameters: File pointer, int rows, int columns, char image 2D array
+Returned Output: address of 2D array
+Functionality: takes the image and changes the location of each pixel in the 2D array
+by 90 degrees, display changes

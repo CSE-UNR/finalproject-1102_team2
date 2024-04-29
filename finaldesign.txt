@@ -1,0 +1,17 @@
+Tyler Johnson
+
+Main: call the other functions and exit the program.
+ 
+Menu function: we will need to display the menu choices and then prompt the user for their response. It will also contain the ability to choose to load images, display image edit image and exit the program. It will return nothing.
+ 
+Crop: this function should allow the user to shrink the image using 2d arrays to crop the sides of the image.
+ 
+Bright: this function will need to increase the numeric value of each pixel by 1 to increase the brightness this will be done with iteration and arithmetic along with IO and 2d arrays. 
+
+Dim: will need to do the same thing as the bright function but rather than increasing each value we will need to decrease the value by 1. 
+
+Load: this function will be used to upload a gray scale image. We will need to use file IO to get and store the image.
+ 
+Edit: this function will provide the user with the editing choices as well as function calls to the editing functions. This will also save the new image to a file to be displayed later. 
+
+Display: this will display the currently saved image to the user with any modifications they have made.

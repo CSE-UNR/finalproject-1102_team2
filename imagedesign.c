@@ -4,9 +4,10 @@
 #include <stdio.h> 
 
 int Menu();
+void GetImage();
 
 int main (){ 
-	
+
 
 
 
@@ -28,16 +29,21 @@ int Menu(){
 	return choice;
 }
 
-void GetImage(){ 
-	FILE *imagefp;
-	imagefp = fopen ("image.txt", "w"); 
+void GetImage(FILE *imagefp, int maxrow, int colm, int imsize[][colm]){ 
+	 
+	int filename [20]; 
+	
+	printf("Enter file name");
+	scanf(" %s ", filename);
+	imagefp = fopen (filename, "r"); 
 	
 	if (imagefp == NULL){ 
-		printf("Can not open file\n");
+		printf("Can not load image\n");
 	}
 	else{ 
-		
+	int inx = 0; 
+	while (fscanf(filename, "%d", &imsize[inx][
+		printf("Image successfully loaded!\n"); 
+	} 
 	
-	
-	}
 }

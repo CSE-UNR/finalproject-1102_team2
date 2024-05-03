@@ -20,7 +20,7 @@ int main (){
 	int colindex;
 	GetImage(imagefp, MAXROW, MAXCOL, imsize, &rowindex, &colindex); 
 	DisplayImage(rowindex, colindex, imsize);
-	printf("%d", colindex);
+	
 
 
 	
@@ -109,7 +109,7 @@ void DisplayImage(int rowindex, int colindex, int imsize[][MAXCOL]){
 			printf("%c", pixel);
 			
 		printf("%d\n", imsize[row][col]);
-	}
+		}
 	} 
 }
 

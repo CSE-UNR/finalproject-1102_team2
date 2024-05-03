@@ -6,6 +6,7 @@
 #define MAXCOL 500
 
 int Menu();
+int EditMenu();
 void GetImage(FILE *imagefp, int maxrow, int colm, int imsize[][colm]);
 void DisplayImage(int row, int col, int imsize[][col]
 );
@@ -66,6 +67,9 @@ void DisplayImage(int row, int col, int imsize[][col]){
 	}
 }
 
+int EditMenu(){
+
+}
 
 
 

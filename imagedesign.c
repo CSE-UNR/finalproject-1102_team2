@@ -2,12 +2,12 @@
 // Ayla Velasquez 
 
 #include <stdio.h>
-#define MAXROW 500 
-#define MAXCOL 500
+#define MAXROW 100
+#define MAXCOL 100
 
 int Menu();
 int EditMenu();
-void GetImage(FILE *imagefp, int maxrow, int colm, int imsize[][colm], int *rowI, int *colI);
+void GetImage(FILE *imagefp, int maxrow, int colm, int imsize[][colm], int *rowI);
 void DisplayImage(int row, int col, int imsize[][col]);
 int main (){  
 
@@ -18,7 +18,7 @@ int main (){
 
 	int rowindex;
 	int colindex;
-	GetImage(imagefp, MAXROW, MAXCOL, imsize, &rowindex, &colindex); 
+	GetImage(imagefp, MAXROW, MAXCOL, imsize, &rowindex); 
 	DisplayImage(rowindex, colindex, imsize);
 	
 
@@ -42,7 +42,7 @@ int Menu(){
 	return choice;
 }
 
-void GetImage(FILE *imagefp, int maxrow, int colm, int imsize[][colm], int *rowI, int *colI){ 
+void GetImage(FILE *imagefp, int maxrow, int colm, int imsize[][colm], int *rowI){ 
 	 
 	char filename [20]; 
 	
@@ -54,14 +54,14 @@ void GetImage(FILE *imagefp, int maxrow, int colm, int imsize[][colm], int *rowI
 		printf("Can not load image\n"); 	
 	}
 	else{ 
-		int row = 0, col = 0; 
-		while (fscanf(imagefp, "%d", &imsize[row][col]) == 1){
-		col++; 
+		int row = 0; 
+		while (fscanf(imagefp, "%d", &imsize[row][MAXCOL]) == 1){
+		
 		row++;
 			
 		} 
 		*rowI = row; 
-		*colI = col;
+		
 		printf("Image successfully loaded!\n"); 
 		fclose(imagefp);
 	} 
@@ -86,27 +86,28 @@ int EditMenu(){
 void DisplayImage(int rowindex, int colindex, int imsize[][MAXCOL]){
 	
 	
+	
 	for(int row = 0; row < rowindex; row++){ 
 		for(int col = 0; col < colindex;col++){
 		char pixel;
-		switch (imsize[row][col]){ 
-			case 0: 
-				pixel = ' '; 
-				break; 
-			case 1: 
-				pixel = '.';
-				break;  
-			case 2: 
-				pixel = 'o'; 
-				break; 
-			case 3: 
-				pixel =  'O'; 
-				break; 
-			case 4: 
-				pixel = '0'; 
-				break; 
-			} 
-			printf("%c", pixel);
+		//switch (imsize[row][col]){ 
+			//case 0: 
+			//	pixel = ' '; 
+		//		break; 
+		//	case 1: 
+		//		pixel = '.';
+		//		break;  
+		//	case 2: 
+		//		pixel = 'o'; 
+		//		break; 
+		//	case 3: 
+		//		pixel =  'O'; 
+		//		break; 
+		//	case 4: 
+		//		pixel = '0'; 
+		//		break; 
+		//	} 
+		//	printf("%c", pixel);
 			
 		printf("%d\n", imsize[row][col]);
 		}

@@ -7,18 +7,18 @@
 
 int Menu();
 int EditMenu();
-void GetImage(FILE *imagefp, int maxrow, int colm, int imsize[][colm], int *rowI);
+void GetImage(FILE *imagefp, int maxrow, int colm, int imsize[][colm], int *rowI, int *colI);
 void DisplayImage(int row, int col, int imsize[][col]);
 int main (){  
 
 	int imsize[MAXROW][MAXCOL]; 
-	FILE *imagefp = NULL; 
+	FILE *imagefp; 
 
 
 
 	int rowindex;
 	int colindex;
-	GetImage(imagefp, MAXROW, MAXCOL, imsize, &rowindex); 
+	GetImage(imagefp, MAXROW, MAXCOL, imsize, &rowindex, &colindex); 
 	DisplayImage(rowindex, colindex, imsize);
 	
 
@@ -42,31 +42,45 @@ int Menu(){
 	return choice;
 }
 
-void GetImage(FILE *imagefp, int maxrow, int colm, int imsize[][colm], int *rowI){ 
+void GetImage(FILE *imagefp, int maxrow, int colm, int imsize[][colm], int *rowI, int *colI){ 
 	 
 	char filename [20]; 
 	
+	int row = 0;
+	int col = 0;
 	printf("Enter file name: ");
 	scanf("%s", filename);
 	imagefp = fopen (filename, "r"); 
 	
 	if (imagefp == NULL){ 
-		printf("Can not load image\n"); 	
+		printf("Can not load image\n"); 
+		return 0;	
 	}
 	else{ 
-		int row = 0; 
-		while (fscanf(imagefp, "%d", &imsize[row][MAXCOL]) == 1){
-		
+	 
+		while (fscanf(imagefp, "%d", &imsize[row][MAXCOL])== 1){
 		row++;
-			
-		} 
-		*rowI = row; 
+		*rowI = row;
+		}
+		 
+		while (fscanf(imagefp, "%d", &imsize[MAXROW][col]) == 1){
+		col++;
+		*colI = col;
+		}
+	
+			//for (int row = 0; row < MAXROW; row++){ 
+			//	for(int col = 0; col < MAXCOL; col++){ 
+			//	fscanf(imagefp, "%d", &imsize[row][col]); 
+			//	} 
+			//}
+		 
+		 
 		
 		printf("Image successfully loaded!\n"); 
 		fclose(imagefp);
 	} 
-	
-} 
+}
+ 
 
 
 int EditMenu(){
@@ -87,9 +101,9 @@ void DisplayImage(int rowindex, int colindex, int imsize[][MAXCOL]){
 	
 	
 	
-	for(int row = 0; row < rowindex; row++){ 
-		for(int col = 0; col < colindex;col++){
-		char pixel;
+	for(int row = 0; row < rowindex ; row++){ 
+		for(int col = 0; col < 10;col++){
+		//char pixel;
 		//switch (imsize[row][col]){ 
 			//case 0: 
 			//	pixel = ' '; 

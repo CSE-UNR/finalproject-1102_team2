@@ -14,16 +14,16 @@ int main (){
 
 	int imsize[MAXROW][MAXCOL]; 
 	FILE *imagefp = NULL; 
-<<<<<<< HEAD
+
 
 	GetImage(imagefp, MAXROW, MAXCOL, imsize); 
 	DisplayImage(MAXROW, MAXCOL, imsize);
-=======
+
 	int rowindex;
 	int colindex;
 	GetImage(imagefp, MAXROW, MAXCOL, imsize, &rowindex, &colindex); 
 	DisplayImage(rowindex, colindex, imsize);
->>>>>>> 33fa4f9cb4e11ded3722060e1b62c40589177935
+
 	
 return 0;
 } 
@@ -76,12 +76,19 @@ void DisplayImage(int row, int col, int imsize[][col]){
 }
 
 int EditMenu(){
-
+	int choice;
+	
+	printf("**EDITING**\n");
+	printf("1: Crop image\n");
+	printf("2: Dim image\n");
+	printf("3: Edit image\n");
+	printf("0: Exit\n");
+	
+	printf("\nChoose from one of the options above:");
+	scanf("%d", &choice);
+	
 }
 
-
-
-=======
 void DisplayImage(int rowindex, int colindex, int imsize[][MAXCOL]){
 	
 	

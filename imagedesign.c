@@ -63,15 +63,53 @@ void GetImage(FILE *imagefp, int maxrow, int colm, int imsize[][colm],int *rowI,
 } 
 
 void DisplayImage(int rowindex, int colindex, int imsize[][MAXCOL]){
+	
+	
 	for(int row = 0; row < rowindex; row++){ 
 		for(int col = 0; col < colindex;col++){
+		char pixel;
+		switch (imsize[row][col]){ 
+			case 0: 
+				pixel = ' '; 
+				break; 
+			case 1: 
+				pixel = '.';
+				break;  
+			case 2: 
+				pixel = 'o'; 
+				break; 
+			case 3: 
+				pixel =  'O'; 
+				break; 
+			case 4: 
+				pixel = '0'; 
+				break; 
+			} 
+			printf("%c", pixel);
+			
 		printf("%d\n", imsize[row][col]);
 	}
-	}
+	} 
 }
 
-
-
+void brighten(int rowindex, int colindex,int imsize[][MAXCOL]){ 
+	for(int row = 0; row < rowindex;row++){ 
+		for(int col = 0; col < colindex;col++){
+			if (imsize[row][col] != 4){
+				imsize[row][col] + 1; 
+				}
+			}
+		}
+	} 
+void dim(int rowindex, int colindex,int imsize[][MAXCOL]){ 
+	for(int row = 0; row < rowindex;row++){ 
+		for(int col = 0; col < colindex;col++){
+			if (imsize[row][col] != 0){
+				imsize[row][col] - 1; 
+				}
+			}
+		}
+	} 
 
 
 

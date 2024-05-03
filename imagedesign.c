@@ -17,7 +17,7 @@ int main (){
 	int colindex;
 	GetImage(imagefp, MAXROW, MAXCOL, imsize, &rowindex, &colindex); 
 	DisplayImage(rowindex, colindex, imsize);
-	printf("%d",colindex);
+	
 return 0;
 } 
 
@@ -62,7 +62,7 @@ void GetImage(FILE *imagefp, int maxrow, int colm, int imsize[][colm],int *rowI,
 	
 } 
 
-void DisplayImage(int rowindex, int colindex, int imsize[][colindex]){
+void DisplayImage(int rowindex, int colindex, int imsize[][MAXCOL]){
 	for(int row = 0; row < rowindex; row++){ 
 		for(int col = 0; col < colindex;col++){
 		printf("%d\n", imsize[row][col]);

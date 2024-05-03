@@ -8,12 +8,12 @@
 int Menu();
 int EditMenu();
 void GetImage(FILE *imagefp, int maxrow, int colm, int imsize[][colm], int *rowI, int *colI);
-void DisplayImage(int row, int col, int imsize[][col]
-);
+void DisplayImage(int row, int col, int imsize[][col]);
 int main (){  
 
 	int imsize[MAXROW][MAXCOL]; 
 	FILE *imagefp = NULL; 
+
 
 
 	int rowindex;
@@ -71,11 +71,11 @@ void GetImage(FILE *imagefp, int maxrow, int colm, int imsize[][colm], int *rowI
 
 int EditMenu(){
 	int choice;
-	
+
 	printf("**EDITING**\n");
-	printf("1: Crop image\n");
+	printf("1: Crop\n");
 	printf("2: Dim image\n");
-	printf("3: Edit image\n");
+	printf("3: Brighten image\n");
 	printf("0: Exit\n");
 	
 	printf("\nChoose from one of the options above:");

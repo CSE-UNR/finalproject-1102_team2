@@ -67,7 +67,7 @@ void GetImage(FILE *imagefp, int maxrow, int colm, int imsize[][colm]){
 	
 } 
 
-<<<<<<< HEAD
+
 void DisplayImage(int row, int col, int imsize[][col]){
   
 	for(int i = 0; i < row; i++){ 
@@ -76,18 +76,22 @@ void DisplayImage(int row, int col, int imsize[][col]){
 }
 
 int EditMenu(){
-	int choice;
-	
+	int choice2;
+
 	printf("**EDITING**\n");
-	printf("1: Crop image\n");
+	printf("1: Crop\n");
 	printf("2: Dim image\n");
-	printf("3: Edit image\n");
+	printf("3: Brighten image\n");
 	printf("0: Exit\n");
 	
 	printf("\nChoose from one of the options above:");
-	scanf("%d", &choice);
+	scanf("%d", &choice2);
 	
+	return choice2;
 }
+
+
+
 
 void DisplayImage(int rowindex, int colindex, int imsize[][MAXCOL]){
 	
@@ -137,6 +141,6 @@ void dim(int rowindex, int colindex,int imsize[][MAXCOL]){
 			}
 		}
 	} 
->>>>>>> 33fa4f9cb4e11ded3722060e1b62c40589177935
+
 
 

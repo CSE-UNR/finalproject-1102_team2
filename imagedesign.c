@@ -6,18 +6,24 @@
 #define MAXCOL 500
 
 int Menu();
+int EditMenu();
 void GetImage(FILE *imagefp, int maxrow, int colm, int imsize[][colm], int *rowI, int *colI);
-void DisplayImage(int rowindex, int col,int imsize[][col]
+void DisplayImage(int row, int col, int imsize[][col]
 );
 int main (){  
 
 	int imsize[MAXROW][MAXCOL]; 
 	FILE *imagefp = NULL; 
+
+
 	int rowindex;
 	int colindex;
 	GetImage(imagefp, MAXROW, MAXCOL, imsize, &rowindex, &colindex); 
 	DisplayImage(rowindex, colindex, imsize);
 	printf("%d", colindex);
+
+
+	
 return 0;
 } 
 
@@ -36,7 +42,7 @@ int Menu(){
 	return choice;
 }
 
-void GetImage(FILE *imagefp, int maxrow, int colm, int imsize[][colm],int *rowI, int *colI){ 
+void GetImage(FILE *imagefp, int maxrow, int colm, int imsize[][colm], int *rowI, int *colI){ 
 	 
 	char filename [20]; 
 	
@@ -54,13 +60,28 @@ void GetImage(FILE *imagefp, int maxrow, int colm, int imsize[][colm],int *rowI,
 		row++;
 			
 		} 
-		*rowI = row;
+		*rowI = row; 
 		*colI = col;
 		printf("Image successfully loaded!\n"); 
 		fclose(imagefp);
 	} 
 	
 } 
+
+
+int EditMenu(){
+	int choice;
+	
+	printf("**EDITING**\n");
+	printf("1: Crop image\n");
+	printf("2: Dim image\n");
+	printf("3: Edit image\n");
+	printf("0: Exit\n");
+	
+	printf("\nChoose from one of the options above:");
+	scanf("%d", &choice);
+	
+}
 
 void DisplayImage(int rowindex, int colindex, int imsize[][MAXCOL]){
 	

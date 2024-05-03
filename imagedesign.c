@@ -17,7 +17,7 @@ int main (){
 	int colindex;
 	GetImage(imagefp, MAXROW, MAXCOL, imsize, &rowindex, &colindex); 
 	DisplayImage(rowindex, colindex, imsize);
-	
+	printf("%d", colindex);
 return 0;
 } 
 

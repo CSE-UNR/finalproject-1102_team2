@@ -6,17 +6,18 @@
 #define MAXCOL 500
 
 int Menu();
-void GetImage(FILE *imagefp, int maxrow, int colm, int imsize[][colm]);
-void DisplayImage(int row, int col, int imsize[][col]
+void GetImage(FILE *imagefp, int maxrow, int colm, int imsize[][colm], int *rowI, int *colI);
+void DisplayImage(int rowindex, int col,int imsize[][col]
 );
 int main (){  
 
 	int imsize[MAXROW][MAXCOL]; 
 	FILE *imagefp = NULL; 
-
-	GetImage(imagefp, MAXROW, MAXCOL, imsize); 
-	DisplayImage(MAXROW, MAXCOL, imsize);
-	
+	int rowindex;
+	int colindex;
+	GetImage(imagefp, MAXROW, MAXCOL, imsize, &rowindex, &colindex); 
+	DisplayImage(rowindex, colindex, imsize);
+	printf("%d",colindex);
 return 0;
 } 
 
@@ -35,7 +36,7 @@ int Menu(){
 	return choice;
 }
 
-void GetImage(FILE *imagefp, int maxrow, int colm, int imsize[][colm]){ 
+void GetImage(FILE *imagefp, int maxrow, int colm, int imsize[][colm],int *rowI, int *colI){ 
 	 
 	char filename [20]; 
 	
@@ -52,17 +53,20 @@ void GetImage(FILE *imagefp, int maxrow, int colm, int imsize[][colm]){
 		col++; 
 		row++;
 			
-		}
+		} 
+		*rowI = row;
+		*colI = col;
 		printf("Image successfully loaded!\n"); 
 		fclose(imagefp);
 	} 
 	
 } 
 
-void DisplayImage(int row, int col, int imsize[][col]){
-  
-	for(int i = 0; i < row; i++){ 
-		printf("%d", imsize[i][col]);
+void DisplayImage(int rowindex, int colindex, int imsize[][colindex]){
+	for(int row = 0; row < rowindex; row++){ 
+		for(int col = 0; col < colindex;col++){
+		printf("%d\n", imsize[row][col]);
+	}
 	}
 }
 

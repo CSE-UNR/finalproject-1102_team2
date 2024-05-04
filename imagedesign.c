@@ -58,7 +58,7 @@ int GetImage(FILE *imagefp, int maxrow, int colm, char imsize[][colm], int *rowI
 	}
 	else{ 
 	 
-		while (fscanf(imagefp, "%c", &imsize[row][MAXCOL]) == NULL){
+		while (fscanf(imagefp, "%c", &imsize[row][MAXCOL]) == '\0'){
 			if(imsize[row][MAXCOL] == '\n'){
 				row++;
 				col = 0;

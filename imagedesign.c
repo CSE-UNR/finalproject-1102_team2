@@ -7,11 +7,11 @@
 
 int Menu();
 int EditMenu();
-void GetImage(FILE *imagefp, int maxrow, int colm, int imsize[][colm], int *rowI, int *colI);
-void DisplayImage(int row, int col, int imsize[][col]);
+int GetImage(FILE *imagefp, int maxrow, int colm, char imsize[][colm], int *rowI, int *colI);
+void DisplayImage(int row, int col, char imsize[][col]);
 int main (){  
 
-	int imsize[MAXROW][MAXCOL]; 
+	char imsize[MAXROW][MAXCOL]; 
 	FILE *imagefp; 
 
 
@@ -42,7 +42,7 @@ int Menu(){
 	return choice;
 }
 
-void GetImage(FILE *imagefp, int maxrow, int colm, int imsize[][colm], int *rowI, int *colI){ 
+int GetImage(FILE *imagefp, int maxrow, int colm, char imsize[][colm], int *rowI, int *colI){ 
 	 
 	char filename [20]; 
 	
@@ -58,15 +58,18 @@ void GetImage(FILE *imagefp, int maxrow, int colm, int imsize[][colm], int *rowI
 	}
 	else{ 
 	 
-		while (fscanf(imagefp, "%d", &imsize[row][MAXCOL])== 1){
-		row++;
-		*rowI = row;
-		}
-		 
-		while (fscanf(imagefp, "%d", &imsize[MAXROW][col]) == 1){
-		col++;
-		*colI = col;
-		}
+		while (fscanf(imagefp, "%c", &imsize[row][MAXCOL]) == NULL){
+			if(imsize[row][MAXCOL] == '\n'){
+				row++;
+				col = 0;
+			}else{
+				col++;
+			}
+		} 
+	//	while (fscanf(imagefp, "%c", &imsize[MAXROW][col]) == 1){
+	//	col++;
+	//	*colI = col;
+	//	}
 	
 			//for (int row = 0; row < MAXROW; row++){ 
 			//	for(int col = 0; col < MAXCOL; col++){ 
@@ -97,7 +100,7 @@ int EditMenu(){
 	
 }
 
-void DisplayImage(int rowindex, int colindex, int imsize[][MAXCOL]){
+void DisplayImage(int rowindex, int colindex, char imsize[][MAXCOL]){
 	
 	
 	

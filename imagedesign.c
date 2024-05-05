@@ -134,27 +134,77 @@ void DisplayImage(int rowindex, int colindex, char imsize[][MAXCOL]){
 	
 	
 	for(int row = 0; row < rowindex ; row++){ 
-		for(int col = 0; col < colindex;col++){
-		printf("%c", imsize[row][col]);
+		for(int col = 0; col < colindex;col++){ 
+			if(imsize [row][col] == '0'){
+				printf(" "); 
+				} 
+			else if (imsize [row][col] == '1'){
+				printf("."); 
+				} 
+			else if (imsize [row][col] == '2'){
+				printf("o"); 
+				} 
+			else if (imsize [row][col] == '3'){
+				printf("O"); 
+				} 
+			else if (imsize [row][col] == '4'){
+				printf("0"); 
+				} 
+			else if (imsize[row][col] == '\n'){ 
+			printf("\n"); 
+			}
+		//printf("%c", imsize[row][col]);
 		}
 	} 
-	printf("\n");
+	printf("\n\n");
 }
 
 void brighten(int rowindex, int colindex,int imsize[][MAXCOL]){ 
-	for(int row = 0; row < rowindex;row++){ 
-		for(int col = 0; col < colindex;col++){
-			if (imsize[row][col] != 4){
-				imsize[row][col] + 1; 
-				}
+	for(int row = 0; row < rowindex ; row++){ 
+		for(int col = 0; col < colindex;col++){ 
+			if(imsize [row][col] == '0'){
+				printf(" "); 
+				} 
+			else if (imsize [row][col] == '1'){
+				printf(" "); 
+				} 
+			else if (imsize [row][col] == '2'){
+				printf("."); 
+				} 
+			else if (imsize [row][col] == '3'){
+				printf("o"); 
+				} 
+			else if (imsize [row][col] == '4'){
+				printf("O"); 
+				} 
+			else if (imsize[row][col] == '\n'){ 
+			printf("\n"); 
+			} 
 			}
-		}
+				}
+			
+		
 	} 
 void dim(int rowindex, int colindex,int imsize[][MAXCOL]){ 
-	for(int row = 0; row < rowindex;row++){ 
-		for(int col = 0; col < colindex;col++){
-			if (imsize[row][col] != 0){
-				imsize[row][col] - 1; 
+	for(int row = 0; row < rowindex ; row++){ 
+		for(int col = 0; col < colindex;col++){ 
+			if(imsize [row][col] == '0'){
+				printf("."); 
+				} 
+			else if (imsize [row][col] == '1'){
+				printf("o"); 
+				} 
+			else if (imsize [row][col] == '2'){
+				printf("O"); 
+				} 
+			else if (imsize [row][col] == '3'){
+				printf("0"); 
+				} 
+			else if (imsize [row][col] == '4'){
+				printf("0"); 
+				} 
+			else if (imsize[row][col] == '\n'){ 
+			printf("\n");  
 				}
 			}
 		}

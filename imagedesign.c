@@ -9,15 +9,19 @@ int Menu();
 int EditMenu();
 int GetImage(FILE *imagefp, int maxrow, int colm, char imsize[][colm], int *rowI, int *colI);
 void DisplayImage(int row, int col, char imsize[][col]);
+void dim(int rowindex, int colindex,char imsize[][MAXCOL]);
+void brighten(int rowindex, int colindex,char imsize[][MAXCOL]);
+int crop(int rowindex, int colindex, char imsize[][MAXCOL], char newimsize[][MAXCOL]);
+
 int main (){  
 
-	char imsize[MAXROW][MAXCOL]; 
+	char imsize[MAXROW][MAXCOL], 	newimsize[MAXROW][MAXCOL]; 
 	FILE *imagefp; 
 	int rowindex;
 	int colindex;
 	char userchoice, userchoice2;
-	
-	
+	char file[100];
+		
 	do{
 		userchoice = Menu();
 		
@@ -29,17 +33,26 @@ int main (){
 				DisplayImage(rowindex, colindex, imsize);
 				break;
 			case 3:
+				//imagefp = fopen (file, "r"); 
+				//if (imagefp == NULL){ 
+				//printf("Sorry, no image to edit\n"); 
+				//}else{
 				userchoice2 = EditMenu();
 				switch(userchoice2){
 					case 1:
+						crop(rowindex, colindex, imsize, newimsize);
 						break;
 					case 2:
+						dim(rowindex, colindex, imsize);
 						break;
 					case 3:
+						brighten(rowindex, colindex,imsize);
 						break;
 					case 0:
 						break;
 				}
+				//}
+				break;
 			case 0:
 			printf("Goodbye!\n");
 		}
@@ -159,7 +172,7 @@ void DisplayImage(int rowindex, int colindex, char imsize[][MAXCOL]){
 	printf("\n\n");
 }
 
-void brighten(int rowindex, int colindex,int imsize[][MAXCOL]){ 
+void brighten(int rowindex, int colindex,char imsize[][MAXCOL]){ 
 	for(int row = 0; row < rowindex ; row++){ 
 		for(int col = 0; col < colindex;col++){ 
 			if(imsize [row][col] == '0'){
@@ -185,7 +198,7 @@ void brighten(int rowindex, int colindex,int imsize[][MAXCOL]){
 			
 		
 	} 
-void dim(int rowindex, int colindex,int imsize[][MAXCOL]){ 
+void dim(int rowindex, int colindex,char imsize[][MAXCOL]){ 
 	for(int row = 0; row < rowindex ; row++){ 
 		for(int col = 0; col < colindex;col++){ 
 			if(imsize [row][col] == '0'){
@@ -209,6 +222,34 @@ void dim(int rowindex, int colindex,int imsize[][MAXCOL]){
 			}
 		}
 	} 
+
+int crop(int rowindex, int colindex, char imsize[][MAXCOL], char newimsize[][MAXCOL]){
+//	for(int row = 0; row < rowindex ; row++){ 
+//		for(int col = 0; col < colindex;col++){ 
+//			if(imsize [row][col] == '0'){
+//				printf(" "); 
+//				} 
+//			else if (imsize [row][col] == '1'){
+//				printf("."); 
+//				} 
+//			else if (imsize [row][col] == '2'){
+//				printf("o"); 
+//				} 
+//			else if (imsize [row][col] == '3'){
+//				printf("O"); 
+//				} 
+//			else if (imsize [row][col] == '4'){
+//				printf("0"); 
+//				} 
+//			else if (imsize[row][col] == '\n'){ 
+//			printf("\n"); 
+//			}
+//		}
+//	} 
+}
+
+
+
 
 
 

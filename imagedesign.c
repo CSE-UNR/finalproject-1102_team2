@@ -13,14 +13,41 @@ int main (){
 
 	char imsize[MAXROW][MAXCOL]; 
 	FILE *imagefp; 
-	
 	int rowindex;
 	int colindex;
-	GetImage(imagefp, MAXROW, MAXCOL, imsize, &rowindex, &colindex); 
-	DisplayImage(rowindex, colindex, imsize);
+	char userchoice, userchoice2;
 	
 	
-
+	do{
+		userchoice = Menu();
+		
+		switch(userchoice){
+			case 1:
+				GetImage(imagefp, MAXROW, MAXCOL, imsize, &rowindex, &colindex); 
+				break;
+			case 2:
+				DisplayImage(rowindex, colindex, imsize);
+				break;
+			case 3:
+				userchoice2 = EditMenu();
+				switch(userchoice2){
+					case 1:
+						break;
+					case 2:
+						break;
+					case 3:
+						break;
+					case 0:
+						break;
+				}
+			case 0:
+			printf("Goodbye!\n");
+		}
+	
+	
+	
+	
+	}while(userchoice != 0);
 	
 return 0;
 } 
@@ -46,10 +73,10 @@ int GetImage(FILE *imagefp, int maxrow, int colm, char imsize[][colm], int *rowI
 	
 	int row = 0;
 	int col = 0;
-	printf("Enter file name: ");
+	printf("What is the name of the image file: ");
 	scanf("%s", filename);
 	imagefp = fopen (filename, "r"); 
-	
+	printf("\n");
 	if (imagefp == NULL){ 
 		printf("Can not load image\n"); 
 		return 0;	
@@ -81,7 +108,7 @@ int GetImage(FILE *imagefp, int maxrow, int colm, char imsize[][colm], int *rowI
 		 
 		 
 		
-		printf("Image successfully loaded!\n"); 
+		printf("Image successfully loaded!\n\n"); 
 		fclose(imagefp);
 	} 
 }
@@ -95,7 +122,7 @@ int EditMenu(){
 	printf("1: Crop\n");
 	printf("2: Dim image\n");
 	printf("3: Brighten image\n");
-	printf("0: Exit\n");
+	printf("0: Return to main menu\n");
 	
 	printf("\nChoose from one of the options above:");
 	scanf("%d", &choice);
@@ -111,6 +138,7 @@ void DisplayImage(int rowindex, int colindex, char imsize[][MAXCOL]){
 		printf("%c", imsize[row][col]);
 		}
 	} 
+	printf("\n");
 }
 
 void brighten(int rowindex, int colindex,int imsize[][MAXCOL]){ 

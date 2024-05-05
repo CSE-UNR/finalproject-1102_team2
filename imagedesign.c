@@ -13,15 +13,13 @@ int main (){
 
 	char imsize[MAXROW][MAXCOL]; 
 	FILE *imagefp; 
-
-
-
+	
 	int rowindex;
 	int colindex;
 	GetImage(imagefp, MAXROW, MAXCOL, imsize, &rowindex, &colindex); 
 	DisplayImage(rowindex, colindex, imsize);
 	
-
+	
 
 	
 return 0;
@@ -58,18 +56,22 @@ int GetImage(FILE *imagefp, int maxrow, int colm, char imsize[][colm], int *rowI
 	}
 	else{ 
 	 
-		while (fscanf(imagefp, "%c", &imsize[row][MAXCOL]) == '\0'){
-			if(imsize[row][MAXCOL] == '\n'){
-				row++;
-				col = 0;
-			}else{
-				col++;
+		while (fscanf(imagefp, "%c", &imsize[row][col]) == 1){
+			if(imsize[row][col] == '\n'){
+				row++; 
+				
 			}
+			else{
+				col++; 
+				
+			} 
 		} 
-	//	while (fscanf(imagefp, "%c", &imsize[MAXROW][col]) == 1){
-	//	col++;
-	//	*colI = col;
-	//	}
+		*colI = col;
+		*rowI = row;
+		//while (fscanf(imagefp, "%c", &imsize[MAXROW][col]) == 1){
+		//col++;
+		//*colI = col;
+		//}
 	
 			//for (int row = 0; row < MAXROW; row++){ 
 			//	for(int col = 0; col < MAXCOL; col++){ 
@@ -105,28 +107,8 @@ void DisplayImage(int rowindex, int colindex, char imsize[][MAXCOL]){
 	
 	
 	for(int row = 0; row < rowindex ; row++){ 
-		for(int col = 0; col < 10;col++){
-		//char pixel;
-		//switch (imsize[row][col]){ 
-			//case 0: 
-			//	pixel = ' '; 
-		//		break; 
-		//	case 1: 
-		//		pixel = '.';
-		//		break;  
-		//	case 2: 
-		//		pixel = 'o'; 
-		//		break; 
-		//	case 3: 
-		//		pixel =  'O'; 
-		//		break; 
-		//	case 4: 
-		//		pixel = '0'; 
-		//		break; 
-		//	} 
-		//	printf("%c", pixel);
-			
-		printf("%d\n", imsize[row][col]);
+		for(int col = 0; col < colindex;col++){
+		printf("%c", imsize[row][col]);
 		}
 	} 
 }

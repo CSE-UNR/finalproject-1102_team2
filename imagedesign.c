@@ -224,28 +224,33 @@ void dim(int rowindex, int colindex,char imsize[][MAXCOL]){
 	} 
 
 int crop(int rowindex, int colindex, char imsize[][MAXCOL], char newimsize[][MAXCOL]){
-//	for(int row = 0; row < rowindex ; row++){ 
-//		for(int col = 0; col < colindex;col++){ 
-//			if(imsize [row][col] == '0'){
-//				printf(" "); 
-//				} 
-//			else if (imsize [row][col] == '1'){
-//				printf("."); 
-//				} 
-//			else if (imsize [row][col] == '2'){
-//				printf("o"); 
-//				} 
-//			else if (imsize [row][col] == '3'){
-//				printf("O"); 
-//				} 
-//			else if (imsize [row][col] == '4'){
-//				printf("0"); 
-//				} 
-//			else if (imsize[row][col] == '\n'){ 
-//			printf("\n"); 
-//			}
-//		}
-//	} 
+	int colend, rowend, colbegin, rowbegin;
+	
+	for(int row = 0; row < rowindex ; row++){ 
+		for(int col = 0; col < colindex ;col++){ 
+			if(imsize [row][col] == '0'){
+				printf(" "); 
+				} 
+			else if (imsize [row][col] == '1'){
+				printf("."); 
+				} 
+			else if (imsize [row][col] == '2'){
+				printf("o"); 
+				} 
+			else if (imsize [row][col] == '3'){
+				printf("O"); 
+				} 
+			else if (imsize [row][col] == '4'){
+				printf("0"); 
+				} 
+			else if (imsize[row][col] == '\n'){ 
+			printf("\n"); 
+			}
+		}
+	} 
+	printf("The image you want to crop is %d x %d.\n", rowindex, colindex);
+	//printf("%d\n", colindex);
+	//printf("%d\n", rowindex);
 }
 
 

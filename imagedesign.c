@@ -226,8 +226,9 @@ void dim(int rowindex, int colindex,char imsize[][MAXCOL]){
 int crop(int rowindex, int colindex, char imsize[][MAXCOL], char newimsize[][MAXCOL]){
 	int colend, rowend, colbegin, rowbegin;
 	
-	for(int row = 0; row < rowindex ; row++){ 
-		for(int col = 0; col < colindex ;col++){ 
+
+	for(int row = 0; row < rowindex + 1 ; row++){ 
+		for(int col = 0; col < colindex + 1 ;col++){ 
 			if(imsize [row][col] == '0'){
 				printf(" "); 
 				} 

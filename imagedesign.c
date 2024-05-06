@@ -2,13 +2,13 @@
 // Ayla Velasquez 
 
 #include <stdio.h>
-#define MAXROW 100
-#define MAXCOL 100
+#define MAXROW 250
+#define MAXCOL 250
 
 int Menu();
 int EditMenu();
-int GetImage(FILE *imagefp, int maxrow, int colm, char imsize[][colm], int *rowI, int *colI);
-void DisplayImage(int row, int col, char imsize[][col]);
+int GetImage(FILE *imagefp, int maxrow, int colm, char imsize[][colm], int *rowI, int *colI, int *pixelI);
+void DisplayImage(int row, int col, char imsize[][col], int pixel);
 void dim(int rowindex, int colindex,char imsize[][MAXCOL]);
 void brighten(int rowindex, int colindex,char imsize[][MAXCOL]);
 void crop(int rowindex, int colindex, char imsize[][MAXCOL], int colend, int rowend, int colbegin, int rowbegin);
@@ -28,11 +28,11 @@ int main (){
 		
 		switch(userchoice){
 			case 1:
-				GetImage(imagefp, MAXROW, MAXCOL, imsize, &rowindex, &colindex); 
+				GetImage(imagefp, MAXROW, MAXCOL, imsize, &rowindex, &colindex, &pixel); 
 				break;
 			case 2:
-				DisplayImage(rowindex, colindex, imsize);
-				printf("%d", rowindex);
+				DisplayImage(rowindex, colindex, imsize, pixel);
+			//	printf("%d", rowindex);
 				break;
 			case 3:
 				userchoice2 = EditMenu();
@@ -79,12 +79,10 @@ int Menu(){
 	return choice;
 }
 
-int GetImage(FILE *imagefp, int maxrow, int colm, char imsize[][colm], int *rowI, int *colI){ 
+int GetImage(FILE *imagefp, int maxrow, int colm, char imsize[][colm], int *rowI, int *colI, int *pixelI){ 
 	 
 	char filename [20]; 
-	int pixel = 0;
-	int row = 0;
-	int col = 0;
+	int pixel = 0, row = 0, col = 0;
 	printf("What is the name of the image file: ");
 	scanf("%s", filename);
 	imagefp = fopen (filename, "r"); 
@@ -95,24 +93,24 @@ int GetImage(FILE *imagefp, int maxrow, int colm, char imsize[][colm], int *rowI
 	}
 	else{ 
 	 
-		while (fscanf(imagefp, "%c", &imsize[row][col]) == 1){
-			if(imsize[row][col] == '\n'){
+		while (fscanf(imagefp, "%c", &imsize[row][pixel]) == 1){
+			if(imsize[row][pixel] == '\n'){
 				row++; 	
 				
+			}else{ 
+				pixel++; 
 			}
-			else if (row < 1){
+			if(row < 1){
 				col++; 	
 			} 
-			else{ 
-			pixel++; 
-			}
 		} 
 		*colI = col;
-		*rowI = row;				
+		*rowI = row;
+		*pixelI = pixel;			
 		printf("Image successfully loaded!\n\n"); 
 		fclose(imagefp);
 	}  
-	return pixel;
+	
 }
  
 
@@ -133,12 +131,11 @@ int EditMenu(){
 	
 }
 
-void DisplayImage(int rowindex, int colindex, char imsize[][MAXCOL]){
-	
-	
+void DisplayImage(int rowindex, int colindex, char imsize[][MAXCOL], int everypix){
+
 	
 	for(int row = 0; row < rowindex ; row++){ 
-		for(int col = 0; col < colindex;col++){  
+		for(int col = 0; col < everypix;col++){  
 			
 			if(imsize [row][col] == '0'){
 				printf(" "); 

@@ -42,7 +42,8 @@ int main (){
 					case 1:
 						crop(rowindex, colindex, imsize, newimsize);
 						break;
-					case 2:
+					case 2: 
+					printf("test");
 						dim(rowindex, colindex, imsize);
 						break;
 					case 3:
@@ -98,29 +99,14 @@ int GetImage(FILE *imagefp, int maxrow, int colm, char imsize[][colm], int *rowI
 	 
 		while (fscanf(imagefp, "%c", &imsize[row][col]) == 1){
 			if(imsize[row][col] == '\n'){
-				row++; 
-				
+				row++; 	
 			}
 			else{
-				col++; 
-				
+				col++; 	
 			} 
 		} 
 		*colI = col;
-		*rowI = row;
-		//while (fscanf(imagefp, "%c", &imsize[MAXROW][col]) == 1){
-		//col++;
-		//*colI = col;
-		//}
-	
-			//for (int row = 0; row < MAXROW; row++){ 
-			//	for(int col = 0; col < MAXCOL; col++){ 
-			//	fscanf(imagefp, "%d", &imsize[row][col]); 
-			//	} 
-			//}
-		 
-		 
-		
+		*rowI = row;				
 		printf("Image successfully loaded!\n\n"); 
 		fclose(imagefp);
 	} 
@@ -166,55 +152,54 @@ void DisplayImage(int rowindex, int colindex, char imsize[][MAXCOL]){
 			else if (imsize[row][col] == '\n'){ 
 			printf("\n"); 
 			}
-		//printf("%c", imsize[row][col]);
+		
 		}
 	} 
 	printf("\n\n");
 }
 
 void brighten(int rowindex, int colindex,char imsize[][MAXCOL]){ 
+printf("%d,%d", rowindex, colindex);
 	for(int row = 0; row < rowindex ; row++){ 
 		for(int col = 0; col < colindex;col++){ 
 			if(imsize [row][col] == '0'){
-				printf(" "); 
-				} 
-			else if (imsize [row][col] == '1'){
-				printf(" "); 
-				} 
-			else if (imsize [row][col] == '2'){
 				printf("."); 
 				} 
-			else if (imsize [row][col] == '3'){
+			else if (imsize [row][col] == '1'){
 				printf("o"); 
 				} 
-			else if (imsize [row][col] == '4'){
+			else if (imsize [row][col] == '2'){
 				printf("O"); 
+				} 
+			else if (imsize [row][col] == '3'){
+				printf("0"); 
+				} 
+			else if (imsize [row][col] == '4'){
+				printf("0"); 
 				} 
 			else if (imsize[row][col] == '\n'){ 
 			printf("\n"); 
 			} 
 			}
-				}
-			
-		
+				}		
 	} 
 void dim(int rowindex, int colindex,char imsize[][MAXCOL]){ 
 	for(int row = 0; row < rowindex ; row++){ 
 		for(int col = 0; col < colindex;col++){ 
 			if(imsize [row][col] == '0'){
-				printf("."); 
+				printf(" "); 
 				} 
 			else if (imsize [row][col] == '1'){
-				printf("o"); 
+				printf(" "); 
 				} 
 			else if (imsize [row][col] == '2'){
-				printf("O"); 
+				printf("."); 
 				} 
 			else if (imsize [row][col] == '3'){
-				printf("0"); 
+				printf("o"); 
 				} 
 			else if (imsize [row][col] == '4'){
-				printf("0"); 
+				printf("O"); 
 				} 
 			else if (imsize[row][col] == '\n'){ 
 			printf("\n");  
@@ -222,6 +207,7 @@ void dim(int rowindex, int colindex,char imsize[][MAXCOL]){
 			}
 		}
 	} 
+
 
 int crop(int rowindex, int colindex, char imsize[][MAXCOL], char newimsize[][MAXCOL]){
 	int colend, rowend, colbegin, rowbegin;

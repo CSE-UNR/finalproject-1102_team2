@@ -95,8 +95,8 @@ int GetImage(FILE *imagefp, int maxrow, int colm, char imsize[][colm], int *rowI
 		} 
 		*colI = colMax;
 		*rowI = row;
-		printf("row size: %d", *rowI);
-		printf("column size: %d", *colI);
+		printf("row size: %d, ", *rowI);
+		printf("column size: %d\n", *colI);
 					
 		printf("Image successfully loaded!\n\n"); 
 		fclose(imagefp);

@@ -233,6 +233,7 @@ int savefile(char imsize[][MAXCOL], int rowindex, int everypix, int colindex){
 	FILE *newimfp;
 	char filename[100], choice;
 	int col = 0;
+	int row = 0;
 	printf("would you like to save the file (y/n)"); 
 	scanf(" %c", &choice); 
 	if(choice == 'n'){ 
@@ -249,12 +250,14 @@ int savefile(char imsize[][MAXCOL], int rowindex, int everypix, int colindex){
 			else{ 
 				for(int row = 0; row < rowindex ; row++){ 
 					for(int col = 0; col < colindex;col++){
-						fprintf(newimfp, "%d", imsize[row][col]);	
+						fprintf(newimfp, "%c", imsize[row][col]);	
 				
 					}
+				
 				fprintf(newimfp,"\n");
 				}	
-			}
+			} 
+			
 	printf("Image successfully loaded!\n\n");
 	fclose(newimfp);
 	} 

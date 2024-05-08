@@ -12,7 +12,7 @@ void DisplayImage(int rowindex, int colindex, char imsize[][MAXCOL], int pixel);
 void dim(int rowindex, int colindex,char imsize[][MAXCOL], int everypix);
 void brighten(int rowindex, int colindex,char imsize[][MAXCOL], int everypix);
 void crop(int rowindex, int colindex, char imsize[][MAXCOL], int colend, int rowend, int *colbegin, int *rowbegin);
-int savefile(char imsize[][MAXCOL], int row, int everypix, int colindex);
+int savefile(char imsize[][MAXCOL], int row, int colindex);
 
 int main (){  
 
@@ -39,11 +39,11 @@ int main (){
 						break;
 					case 2:
 						dim(rowindex, colindex, imsize, pixel); 
-						savefile(imsize, rowindex, pixel, colindex);
+						savefile(imsize, rowindex, colindex);
 						break;
 					case 3:
 						brighten(rowindex, colindex,imsize, pixel); 
-						savefile(imsize, rowindex, pixel, colindex);
+						savefile(imsize, rowindex, colindex);
 						break;
 				}	
 				break;
@@ -229,7 +229,7 @@ void crop(int rowindex, int colindex, char imsize[][MAXCOL], int colend, int row
 		}
 	printf("\n"); 
 } 
-int savefile(char imsize[][MAXCOL], int rowindex, int everypix, int colindex){ 
+int savefile(char imsize[][MAXCOL], int rowindex, int colindex){ 
 	FILE *newimfp;
 	char filename[100], choice;
 	int col = 0;

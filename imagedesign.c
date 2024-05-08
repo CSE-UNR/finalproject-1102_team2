@@ -148,15 +148,19 @@ void brighten(int rowindex, int colindex,char imsize[][MAXCOL], int everypix){
 		for(int col = 0; col < colindex;col++){
 			if(imsize [row][col] == '0'){
 				printf("."); 
+				imsize [row][col] = '1';
 				} 
 			else if (imsize [row][col] == '1'){
 				printf("o"); 
+				imsize [row][col] = '2';
 				} 
 			else if (imsize [row][col] == '2'){
-				printf("O"); 
+				printf("O");
+				imsize [row][col] = '3'; 
 				} 
 			else if (imsize [row][col] == '3'){
 				printf("0"); 
+				imsize [row][col] = '4';
 				} 
 			else if (imsize [row][col] == '4'){
 				printf("0"); 
@@ -175,15 +179,19 @@ void dim(int rowindex, int colindex,char imsize[][MAXCOL], int everypix){
 				} 
 			else if (imsize [row][col] == '1'){
 				printf(" "); 
+				imsize [row][col] = '0';
 				} 
 			else if (imsize [row][col] == '2'){
 				printf("."); 
+				imsize [row][col] = '1';
 				} 
 			else if (imsize [row][col] == '3'){
 				printf("o"); 
+				imsize [row][col] = '2';
 				} 
 			else if (imsize [row][col] == '4'){
 				printf("O"); 
+				imsize [row][col] = '3';
 				} 
 		}
 	printf("\n");	

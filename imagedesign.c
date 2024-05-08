@@ -16,7 +16,7 @@ int savefile(char imsize[][MAXCOL], int row, int colindex);
 
 int main (){  
 
-	char imsize[MAXROW][MAXCOL], 	newimsize[MAXROW][MAXCOL], userchoice, userchoice2, file[100]; 
+	char imsize[MAXROW][MAXCOL], userchoice, userchoice2, file[100]; 
 	FILE *imagefp; 
 	int rowindex, colindex, Cend, Cbegin, Rend, Rbegin; 
 	
@@ -27,16 +27,9 @@ int main (){
 				GetImage(imagefp, MAXROW, MAXCOL, imsize, &rowindex, &colindex); 
 				break;
 			case 2:
-				//if(imagefp == NULL){
-				//	printf("Sorry, no image to display\n\n");
-			//	}else{
 					DisplayImage(rowindex, colindex, imsize);
-				//}
 				break;
 			case 3:
-				//if(imagefp == NULL){
-				//	printf("Sorry, no image to edit\n\n");
-			//	}else{
 					userchoice2 = EditMenu();
 					switch(userchoice2){
 						case 1:
@@ -53,7 +46,6 @@ int main (){
 							savefile(imsize, rowindex, colindex);
 							break;
 					}	
-			//	}
 				break;
 			case 0:
 			printf("Goodbye!\n");
@@ -106,7 +98,7 @@ int GetImage(FILE *imagefp, int maxrow, int colm, char imsize[][colm], int *rowI
 		printf("Image successfully loaded!\n\n"); 
 		fclose(imagefp);
 	}  
-	
+
 }
 int EditMenu(){
 	int choice2;
@@ -281,5 +273,3 @@ int savefile(char imsize[][MAXCOL], int rowindex, int colindex){
 	} 
 	
 }
-
-

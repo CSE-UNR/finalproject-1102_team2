@@ -216,23 +216,18 @@ void crop(int rowindex, int colindex, char imsize[][MAXCOL], int colend, int row
 		 
 			if(imsize [row][col] == '0'){
 				printf(" "); 
-			//	imsize [row][col] = '0';
 				} 
 			else if (imsize [row][col] == '1'){
 				printf("."); 
-			//	imsize [row][col] = '1';
 				} 
 			else if (imsize [row][col] == '2'){
 				printf("o"); 
-			//	imsize [row][col] = '2';
 				} 
 			else if (imsize [row][col] == '3'){
 				printf("O"); 
-			//	imsize [row][col] = '3';
 				} 
 			else if (imsize [row][col] == '4'){
 				printf("0"); 
-			//	imsize [row][col] = '4';
 				} 
 			}
 			printf("\n"); 

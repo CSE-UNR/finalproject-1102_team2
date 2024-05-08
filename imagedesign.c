@@ -8,7 +8,7 @@
 int Menu();
 int EditMenu();
 int GetImage(FILE *imagefp, int maxrow, int colm, char imsize[][colm], int *rowI, int *colI, int *pixelI);
-void DisplayImage(int row, int col, char imsize[][col], int pixel);
+void DisplayImage(int rowindex, int colindex, char imsize[][MAXCOL], int pixel);
 void dim(int rowindex, int colindex,char imsize[][MAXCOL], int everypix);
 void brighten(int rowindex, int colindex,char imsize[][MAXCOL], int everypix);
 void crop(int rowindex, int colindex, char imsize[][MAXCOL], int colend, int rowend, int *colbegin, int *rowbegin);
@@ -50,9 +50,6 @@ int main (){
 			case 0:
 			printf("Goodbye!\n");
 		}
-	
-	
-	
 	
 	}while(userchoice != 0);
 	
@@ -124,7 +121,6 @@ int EditMenu(){
 
 void DisplayImage(int rowindex, int colindex, char imsize[][MAXCOL], int everypix){
 
-	
 	for(int row = 0; row < rowindex ; row++){ 
 		for(int col = 0; col < colindex;col++){  
 			
@@ -148,12 +144,10 @@ void DisplayImage(int rowindex, int colindex, char imsize[][MAXCOL], int everypi
 		
 		}
 	} 
-	//printf("\n\n");
-
 void brighten(int rowindex, int colindex,char imsize[][MAXCOL], int everypix){ 
 
 	for(int row = 0; row < rowindex ; row++){ 
-		for(int col = 0; col < everypix;col++){
+		for(int col = 0; col < colindex;col++){
 			if(imsize [row][col] == '0'){
 				printf("."); 
 				} 
@@ -168,16 +162,16 @@ void brighten(int rowindex, int colindex,char imsize[][MAXCOL], int everypix){
 				} 
 			else if (imsize [row][col] == '4'){
 				printf("0"); 
-				} 
-			else if (imsize[row][col] == '\n'){ 
-			printf("\n"); 
-			} 
+				} 	
 			}
-				}printf("\n");		
+		printf("\n");
+		}			
 	} 
 void dim(int rowindex, int colindex,char imsize[][MAXCOL], int everypix){ 
+	
 	for(int row = 0; row < rowindex ; row++){ 
-		for(int col = 0; col < everypix;col++){
+		for(int col = 0; col < colindex; col++){
+		
 			if(imsize [row][col] == '0'){
 				printf(" "); 
 				} 
@@ -193,16 +187,13 @@ void dim(int rowindex, int colindex,char imsize[][MAXCOL], int everypix){
 			else if (imsize [row][col] == '4'){
 				printf("O"); 
 				} 
-			else if (imsize[row][col] == '\n'){ 
-			printf("\n");  
-				}
-			}
-		} printf("\n");
-	} 
+		}
+	printf("\n");	
+	}
+} 
 
 
 void crop(int rowindex, int colindex, char imsize[][MAXCOL], int colend, int rowend, int *colbegin, int *rowbegin){
-
 
 	printf("The image you want to crop is %d x %d.\n", rowindex, colindex);
 	printf("The row and column values start in the upper lefthand corner\n");
@@ -215,8 +206,6 @@ void crop(int rowindex, int colindex, char imsize[][MAXCOL], int colend, int row
 	printf("Which row do you want to be the new bottom?");
 	scanf("%d",&rowend);
 	 
-	int pixels;
-	//pixels = ((colend - *colbegin)+1)*((rowend - *rowbegin)+1);
 	for(int row = *rowbegin; row < rowend; row++){ 
 		for(int col = *colbegin;col < colend;col++){
 		 
@@ -260,7 +249,7 @@ int savefile(char imsize[][MAXCOL], int rowindex, int everypix, int colindex){
 			else{ 
 				for(int row = 0; row < rowindex ; row++){ 
 					for(int col = 0; col < colindex;col++){
-						fprintf(newimfp, "%d", imsize[row][everypix]);	
+						fprintf(newimfp, "%d", imsize[row][col]);	
 				
 					}
 				fprintf(newimfp,"\n");
